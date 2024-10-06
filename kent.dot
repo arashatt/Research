@@ -1,0 +1,13 @@
+digraph {
+
+label="Kent University"
+URL="https://www.kent.ac.uk/" 
+world [URL="https://yahoo.com"] 
+mark [label="Mark Batty", URL="https://www.kent.ac.uk/computing/people/3126/batty-mark"]
+"kent university" -> "Mark Batty";
+world -> mark;
+Elahe -> Arash;
+subgraph{
+	thanks
+	}
+}
