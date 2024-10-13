@@ -28,14 +28,14 @@ digraph {
     rust -> articles;
     rust -> belt;
     release -> musl [style = dashed; dir = none;];
+    proc-macro
     
     
     subgraph cluster_graphviz {
-        color=red;
+        graph [color="yellow:red"; style=filled;];
         // TODO: make link abailable to the whole subgraph not just to the label.
         URL = "https://graphviz.gitlab.io/doc/info/lang.html";
         label = "GraphViz Documentation";
-        graph [style = dotted;];
         cluster [URL = "https://graphviz.gitlab.io/doc/info/lang.html#subgraphs-and-clusters";];
         shape [URL = "https://graphviz.org/doc/info/shapes.html";];
         subgraph {

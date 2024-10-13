@@ -11,7 +11,13 @@
 <g id="clust3" class="cluster">
 <title>cluster_graphviz</title>
 <g id="a_clust3"><a xlink:href="https://graphviz.gitlab.io/doc/info/lang.html" xlink:title="GraphViz Documentation">
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="539.5,-229.5 539.5,-366 735.5,-366 735.5,-229.5 539.5,-229.5"/>
+<defs>
+<linearGradient id="l_0" gradientUnits="userSpaceOnUse" x1="539.5" y1="-297.75" x2="735.5" y2="-297.75" >
+<stop offset="0" style="stop-color:yellow;stop-opacity:1.;"/>
+<stop offset="1" style="stop-color:red;stop-opacity:1.;"/>
+</linearGradient>
+</defs>
+<polygon fill="url(#l_0)" stroke="yellow:red" points="539.5,-229.5 539.5,-366 735.5,-366 735.5,-229.5 539.5,-229.5"/>
 <text text-anchor="middle" x="637.5" y="-350.8" font-family="Times,serif" font-size="14.00">GraphViz Documentation</text>
 </a>
 </g>
@@ -21,12 +27,12 @@
 <title>maintainer</title>
 <g id="a_node1"><a xlink:href="https://github.com/matklad" xlink:title="maintainer">
 <defs>
-<linearGradient id="l_0" gradientUnits="userSpaceOnUse" x1="0" y1="-317" x2="95" y2="-317" >
+<linearGradient id="l_1" gradientUnits="userSpaceOnUse" x1="0" y1="-317" x2="95" y2="-317" >
 <stop offset="0" style="stop-color:purple;stop-opacity:1.;"/>
-<stop offset="1" style="stop-color:blue;stop-opacity:1.;"/>
+<stop offset="1" style="stop-color:pink;stop-opacity:1.;"/>
 </linearGradient>
 </defs>
-<polygon fill="url(#l_0)" stroke="purple:blue" points="95,-335 0,-335 0,-299 95,-299 95,-335"/>
+<polygon fill="url(#l_1)" stroke="purple:pink" points="95,-335 0,-335 0,-299 95,-299 95,-335"/>
 <text text-anchor="middle" x="47.5" y="-313.3" font-family="Times,serif" font-size="14.00">maintainer</text>
 </a>
 </g>
