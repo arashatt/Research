@@ -28,7 +28,7 @@ digraph {
     rust -> articles;
     rust -> belt;
     release -> musl [style = dashed; dir = none;];
-    proc-macro
+    
     
     
     subgraph cluster_graphviz {
