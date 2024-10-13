@@ -1,0 +1,42 @@
+digraph {
+    graph [style = dotted;];
+    subgraph {
+        // people
+        node [shape = rect; color = pink; style = filled;];
+        maintainer [URL = "https://github.com/matklad";];
+    }
+    rust_analyzer [label = "Rust Analyzer";URL = "https://rust-analyzer.github.io/";];
+    lsp [label = "Language server protocol";URL = "https://microsoft.github.io/language-server-protocol/";];
+    rust [label = "Rust";URL = "https://www.rust-lang.org/";];
+    belt [URL = "https://plv.mpi-sws.org/rustbelt/";];
+    articles [URL = "https://alastairreid.github.io/RelatedWork/notes/rust-language/";];
+    release [URL = "https://github.com/rust-lang/rust-analyzer/releases";shape = square;];
+    musl [URL = "https://www.musl-libc.org/";];
+    ra_ap_rust_analyzer_documentation [label="document"]
+    rust -> rust_analyzer;
+    lsp -> rust_analyzer;
+    
+    manual [shape = plain;URL = "https://rust-analyzer.github.io/manual.html#toolchain";];
+    crates [shape = plain;URL = "https://rust-analyzer.github.io/manual.html#crates";];
+    manual -> crates;
+    crates -> ra_ap_rust_analyzer_documentation;
+    rust_analyzer -> manual -> release [style = dashed; dir = none;];
+    maintainer -> rust_analyzer [dir = back;];
+    rust -> articles;
+    rust -> belt;
+    release -> musl [style = dashed; dir = none;];
+    
+    subgraph cluster_graphviz {
+        // TODO: make link abailable to the whole subgraph not just to the label.
+        URL = "https://graphviz.gitlab.io/doc/info/lang.html";
+        label = "GraphViz Documentation";
+        graph [style = dotted;];
+        cluster [URL = "https://graphviz.gitlab.io/doc/info/lang.html#subgraphs-and-clusters";];
+        shape [URL = "https://graphviz.org/doc/info/shapes.html";];
+        subgraph {
+            node [shape = plain;];
+            rank = sink;
+            example [URL = "https://observablehq.com/@brianstringfellow/graphvis-subgraph-table-label";];
+        }
+    }
+}

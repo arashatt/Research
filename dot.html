@@ -1,0 +1,36 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="300pt" height="200pt">
+    <script type="text/javascript">
+        function copyText(text) {
+            const textarea = document.createElement("textarea");
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+            alert(text + " copied to clipboard!");
+        }
+    </script>
+
+    <g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 196)">
+        <g id="node1" class="node">
+            <title>Node A</title>
+            <a onclick="copyText('Node A')">
+                <text x="50" y="-50" fill="black">Node A</text>
+            </a>
+        </g>
+        <g id="node2" class="node">
+            <title>Node B</title>
+            <a onclick="copyText('Node B')">
+                <text x="150" y="-100" fill="black">Node B</text>
+            </a>
+        </g>
+        <g id="node3" class="node">
+            <title>Node C</title>
+            <a onclick="copyText('Node C')">
+                <text x="250" y="-150" fill="black">Node C</text>
+            </a>
+        </g>
+    </g>
+</svg>
+
