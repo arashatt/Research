@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{fn}\PYG{+w}{ }\PYG{n+nf}{main}\PYG{p}{()\PYGZob{}}
+
+
+\PYG{p}{\PYGZcb{}}
+\PYG{k}{fn}\PYG{+w}{ }\PYG{n+nf}{add}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{a}\PYG{p}{:}\PYG{+w}{ }\PYG{k+kt}{i32}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{:}\PYG{+w}{ }\PYG{k+kt}{i32}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{k+kt}{i32}\PYG{p}{\PYGZob{}}
+\PYG{n}{a}\PYG{o}{+}\PYG{n}{b}\PYG{p}{\PYGZcb{}}\PYG{+w}{	}
+\end{Verbatim}
