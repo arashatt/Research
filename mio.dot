@@ -1,0 +1,15 @@
+digraph {
+    mio [URL = "https://docs.rs/mio/latest/mio/";];
+    Poll [URL = "https://docs.rs/mio/latest/mio/struct.Poll.html";];
+    register [URL = "https://docs.rs/mio/latest/mio/struct.Registry.html#method.register";];
+    source [label = "event::source";URL = "https://docs.rs/mio/latest/mio/event/trait.Source.html";];
+    Event [URL = "https://docs.rs/mio/latest/mio/event/struct.Events.html";];
+    
+    examples;
+    guides;
+    features;
+    mio -> {Poll Event examples guides features};
+    Poll -> source [style = dashed; dir = back;];
+    register -> source [dir = back;];
+    Poll -> register [dir = back;];
+}

@@ -1,0 +1,65 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{use}\PYG{+w}{ }\PYG{n}{std}\PYG{p}{::\PYGZob{}}\PYG{n}{error}\PYG{p}{::}\PYG{n}{Error}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{time}\PYG{p}{::}\PYG{n}{Duration}\PYG{p}{\PYGZcb{};}
+
+\PYG{k}{use}\PYG{+w}{ }\PYG{n}{mio}\PYG{p}{::\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{net}\PYG{p}{::\PYGZob{}}\PYG{n}{TcpListener}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{TcpStream}\PYG{p}{\PYGZcb{},}
+\PYG{+w}{    }\PYG{n}{Events}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Interest}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Poll}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Token}\PYG{p}{,}
+\PYG{p}{\PYGZcb{};}
+\PYG{k}{const}\PYG{+w}{ }\PYG{n}{SERVER}\PYG{p}{:}\PYG{+w}{ }\PYG{n+nc}{Token}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Token}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{);}
+\PYG{k}{const}\PYG{+w}{ }\PYG{n}{CLIENT}\PYG{p}{:}\PYG{+w}{ }\PYG{n+nc}{Token}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Token}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+
+\PYG{k}{fn}\PYG{+w}{ }\PYG{n+nf}{main}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n+nb}{Result}\PYG{o}{\PYGZlt{}}\PYG{p}{(),}\PYG{+w}{ }\PYG{n+nb}{Box}\PYG{o}{\PYGZlt{}}\PYG{k}{dyn}\PYG{+w}{ }\PYG{n}{Error}\PYG{o}{\PYGZgt{}\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kd}{let}\PYG{+w}{ }\PYG{k}{mut}\PYG{+w}{ }\PYG{n}{poll}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Poll}\PYG{p}{::}\PYG{n}{new}\PYG{p}{()}\PYG{o}{?}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kd}{let}\PYG{+w}{ }\PYG{k}{mut}\PYG{+w}{ }\PYG{n}{events}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Events}\PYG{p}{::}\PYG{n}{with\PYGZus{}capacity}\PYG{p}{(}\PYG{l+m+mi}{1024}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k+kd}{let}\PYG{+w}{ }\PYG{n}{addr}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}127.0.0.1:13265\PYGZdq{}}\PYG{p}{.}\PYG{n}{parse}\PYG{p}{()}\PYG{o}{?}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kd}{let}\PYG{+w}{ }\PYG{k}{mut}\PYG{+w}{ }\PYG{n}{server}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{TcpListener}\PYG{p}{::}\PYG{n}{bind}\PYG{p}{(}\PYG{n}{addr}\PYG{p}{)}\PYG{o}{?}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kd}{let}\PYG{+w}{ }\PYG{k}{mut}\PYG{+w}{ }\PYG{n}{client}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{TcpStream}\PYG{p}{::}\PYG{n}{connect}\PYG{p}{(}\PYG{n}{addr}\PYG{p}{)}\PYG{o}{?}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{n}{poll}\PYG{p}{.}\PYG{n}{registry}\PYG{p}{()}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{register}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{k}{mut}\PYG{+w}{ }\PYG{n}{server}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{SERVER}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Interest}\PYG{p}{::}\PYG{n}{READABLE}\PYG{p}{)}\PYG{o}{?}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{poll}\PYG{p}{.}\PYG{n}{registry}\PYG{p}{()}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{register}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{k}{mut}\PYG{+w}{ }\PYG{n}{client}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{CLIENT}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Interest}\PYG{p}{::}\PYG{n}{WRITABLE}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{Interest}\PYG{p}{::}\PYG{n}{READABLE}\PYG{p}{)}\PYG{o}{?}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{loop}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{poll}\PYG{p}{.}\PYG{n}{poll}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{k}{mut}\PYG{+w}{ }\PYG{n}{events}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nb}{None}\PYG{p}{)}\PYG{o}{?}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n+nf+fm}{println!}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Event\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{event}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{events}\PYG{p}{.}\PYG{n}{iter}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{match}\PYG{+w}{ }\PYG{n}{event}\PYG{p}{.}\PYG{n}{token}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{SERVER}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{k+kd}{let}\PYG{+w}{ }\PYG{n}{connection}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{server}\PYG{p}{.}\PYG{n}{accept}\PYG{p}{()}\PYG{o}{?}\PYG{p}{;}
+\PYG{+w}{                    }\PYG{n+nb}{drop}\PYG{p}{(}\PYG{n}{connection}\PYG{p}{);}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{                }\PYG{n}{CLIENT}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{k}{if}\PYG{+w}{ }\PYG{n}{event}\PYG{p}{.}\PYG{n}{is\PYGZus{}writable}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                        }\PYG{c+c1}{// We can (likely) write to the socket without blocking.}
+\PYG{+w}{                    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{                    }\PYG{k}{if}\PYG{+w}{ }\PYG{n}{event}\PYG{p}{.}\PYG{n}{is\PYGZus{}readable}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                        }\PYG{c+c1}{// We can (likely) read from the socket without blocking.}
+\PYG{+w}{                    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{                    }\PYG{c+c1}{// Since the server just shuts down the connection, let\PYGZsq{}s}
+\PYG{+w}{                    }\PYG{c+c1}{// just exit from our event loop.}
+\PYG{+w}{                    }\PYG{k}{return}\PYG{+w}{ }\PYG{n+nb}{Ok}\PYG{p}{(());}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{                }\PYG{n}{\PYGZus{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n+nf+fm}{unreachable!}\PYG{p}{()}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{fn}\PYG{+w}{ }\PYG{n+nf}{main1}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n+nb}{Result}\PYG{o}{\PYGZlt{}}\PYG{p}{(),}\PYG{+w}{ }\PYG{n+nb}{Box}\PYG{o}{\PYGZlt{}}\PYG{k}{dyn}\PYG{+w}{ }\PYG{n}{Error}\PYG{o}{\PYGZgt{}\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kd}{let}\PYG{+w}{ }\PYG{k}{mut}\PYG{+w}{ }\PYG{n}{events}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Events}\PYG{p}{::}\PYG{n}{with\PYGZus{}capacity}\PYG{p}{(}\PYG{l+m+mi}{1024}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k+kd}{let}\PYG{+w}{ }\PYG{k}{mut}\PYG{+w}{ }\PYG{n}{poll}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Poll}\PYG{p}{::}\PYG{n}{new}\PYG{p}{()}\PYG{o}{?}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{c+c1}{// Register `event::Source`s with `poll`.}
+
+\PYG{+w}{    }\PYG{n}{poll}\PYG{p}{.}\PYG{n}{poll}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{k}{mut}\PYG{+w}{ }\PYG{n}{events}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nb}{Some}\PYG{p}{(}\PYG{n}{Duration}\PYG{p}{::}\PYG{n}{from\PYGZus{}millis}\PYG{p}{(}\PYG{l+m+mi}{100}\PYG{p}{)))}\PYG{o}{?}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{event}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{events}\PYG{p}{.}\PYG{n}{iter}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n+nf+fm}{println!}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Got an event for \PYGZob{}:?\PYGZcb{}\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{event}\PYG{p}{.}\PYG{n}{token}\PYG{p}{());}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{n+nb}{Ok}\PYG{p}{(())}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

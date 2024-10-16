@@ -1,0 +1,53 @@
+
+% https://opensource.com/article/22/8/pdf-latex
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{minted}
+\usepackage{todonotes} % for the todo notes (optional)
+\newcommand{\definition}[2]{\textbf{#1}: #2}
+
+\begin{document}
+	\section*{mio}
+	mio is a Rust crate for non-blocking I/O API interface for building \textbf{high performance I/O apps}.
+	\begin{enumerate}
+
+		\item Creating a Poll. reads events from OS and puts them in Event
+		\item Register an Event source
+		\item Create an Event loop
+
+	\end{enumerate}
+	At the end you’ll have a very small (but quick) TCP server that accepts connections and then drops (disconnects) them.
+	
+
+\inputminted{rust}{fig01.rs}
+
+\subsection*{Poll}
+Poll is a struct allows a program to monitor a large number of \texttt{event::Source}s. It waits until one of them is ready for some class of operations e.g read or write.\footnote{\texttt{event }\texttt{token} and \texttt{interest} are to be interpolated}
+
+\inputminted{rust}{fig02.rs}
+
+\subsection*{event::Source}
+
+\subsection*{Token}
+token is a wrapper around \texttt{usize} and is used as an argument to \texttt{Registry::register } and \texttt{Registry::reregister}.
+\section*{epoll}
+The implementation of epoll uses epoll systemcall defined at \texttt{sys/epoll.h}.
+According to the official documentation, it is monitoring multiple file descriptions to see if \texttt{I/O} operation is possible on any of them.
+
+\begin{itemize}
+	\item interest list (epoll set)
+	\item ready list (a set of references to the interest list)
+\end{itemize}
+Other systemcalls related to epoll are the following:
+\begin{itemize}
+	\item epoll\_create
+	\item epoll\_create1
+	\item epoll\_cntl
+	\item epoll\_wait
+\end{itemize}
+\definition{epoll\_create1}{if the argument is 0, it has the same functionality of epoll\_create. the other argument we can pass to this syscall is \textbf{FD\_CLOEXEC}}.\\
+\definition{epoll\_wait}{blocks the current thread if no event is already available.}
+
+\section*{A code example}
+\inputminted{rust}{fig03.rs}
+\end{document}

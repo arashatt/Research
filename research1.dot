@@ -1,8 +1,9 @@
 digraph {
     graph [style = dotted;];
-    subgraph {
-        // people
-        node [shape = rect; color = "purple:pink"; style = filled;];
+    subgraph people{
+        
+        node [shape = rect; color = "pink:white"; style = filled;];
+        victor[URL="https://people.mpi-sws.org/~viktor/"]
         maintainer [URL = "https://github.com/matklad";];
     }
     subgraph document {
@@ -15,6 +16,10 @@ digraph {
     articles [URL = "https://alastairreid.github.io/RelatedWork/notes/rust-language/";];
     release [URL = "https://github.com/rust-lang/rust-analyzer/releases";shape = square;];
     musl [URL = "https://www.musl-libc.org/";];
+    Coq [URL="https://coq.inria.fr/"]
+    mio [URL="https://docs.rs/mio/1.0.2/mio/"]
+    
+
     ra_ap_rust_analyzer_documentation [label = "document";];
     rust -> rust_analyzer;
     lsp -> rust_analyzer;
@@ -28,7 +33,6 @@ digraph {
     rust -> articles;
     rust -> belt;
     release -> musl [style = dashed; dir = none;];
-    
     
     
     subgraph cluster_graphviz {

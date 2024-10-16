@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+
+\PYG{c+c1}{// `Poll` allows for polling of readiness events.}
+\PYG{k+kd}{let}\PYG{+w}{ }\PYG{n}{poll}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Poll}\PYG{p}{::}\PYG{n}{new}\PYG{p}{()}\PYG{o}{?}\PYG{p}{;}
+\PYG{c+c1}{// `Events` is collection of readiness `Event`s and can be filled by}
+\PYG{c+c1}{// calling `Poll::poll`.}
+\PYG{k+kd}{let}\PYG{+w}{ }\PYG{n}{events}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Events}\PYG{p}{::}\PYG{n}{with\PYGZus{}capacity}\PYG{p}{(}\PYG{l+m+mi}{128}\PYG{p}{);}
+\end{Verbatim}
