@@ -13,3 +13,5 @@ https://www.pm.inf.ethz.ch/research/prusti.html
 http://adam.chlipala.net/cpdt/
 
 I am learning more about Coq, separation logic, dependent types, and Rust state of development.
+
+https://beuke.org/coq-tutorial/
