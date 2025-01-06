@@ -17,3 +17,5 @@ http://adam.chlipala.net/cpdt/
 I am learning more about Coq, separation logic, dependent types, and Rust state of development.
 
 https://beuke.org/coq-tutorial/
+
+دیشب به تاریخ 6ٰژولای پیشرفت‌هایی در تحقیقات Rust داشتم. در خصوص concurrent separation logic و variable invariantهای برنامه های زبان راست.
