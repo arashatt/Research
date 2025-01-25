@@ -29,6 +29,6 @@ https://beuke.org/coq-tutorial/
 
 علاقه زیادی به دنبال کردن این مسئله دارم و در همینجا ادامه اش میدم.
 
+![Coq](https://github.com/user-attachments/assets/e6494f93-f437-40f3-9cde-1fcb5dac7dcb)
 
-![Coq](https://github.com/user-attachments/assets/2b7745ce-bd8d-4e0e-99dc-0c9df7aa3186)
 
