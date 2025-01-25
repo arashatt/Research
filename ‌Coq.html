@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>مقدمه ای بر تحقیقات Coq</title>
+	<meta name="generator" content="LibreOffice 24.8.3.2 (Linux)"/>
+	<meta name="created" content="2025-01-25T23:18:57.091791567"/>
+	<meta name="changed" content="2025-01-26T02:14:20.972961452"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { line-height: 115%; margin-bottom: 0.1in; background: transparent }
+		a:link { color: #000080; text-decoration: underline }
+		a:visited { color: #800000; text-decoration: underline }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><p dir="rtl" align="center" style="line-height: 100%; margin-bottom: 0in">
+<b>C</b><b>oq</b></p>
+<p dir="rtl" align="center" style="line-height: 100%; margin-bottom: 0in">
+<font face="Nazli"><span lang="fa-IR"><b>یک ابزار نوشتن
+اثبات می‌باشد</b></span></font><b>.</b></p>
+<p dir="rtl" align="right" style="line-height: 100%; margin-bottom: 0in">
+<font face="Nazli"><span lang="fa-IR">اساسی تری ترین چیز
+راجع به آن این است که </span></font>Proof <font face="Nazli"><span lang="fa-IR">های
+ریاضی را به عنوان یک برنامه کامپیوتری
+در نظر می‌گیرد</span></font>. <font face="Nazli"><span lang="fa-IR">زبان
+برنامه نویسی </span></font>tactic <font face="Nazli"><span lang="fa-IR">بدین
+منظور ایجاد گردید</span></font>. <font face="Nazli"><span lang="fa-IR">زمانی
+که یک برنامه </span></font>proof <font face="Nazli"><span lang="fa-IR">را
+می‌نویسیم، </span></font>intros <font face="Nazli"><span lang="fa-IR">تابع‌های
+ناشناس را می‌سازند؛ این ساختار به عنوان
+لاندا هم شناخته می‌شود</span></font>. <font face="Nazli"><span lang="fa-IR">همچنین
+</span></font>introduction <font face="Nazli"><span lang="fa-IR">و
+</span></font>apply <font face="Nazli"><span lang="fa-IR">هم به
+همین سیاق کار می‌کنند</span></font>. <font face="Nazli"><span lang="fa-IR">منتهی
+این دو، قضیه‌هایی را به کار می‌برند که
+کاربر تعریف نکرده است</span></font>. ‌destruct
+<font face="Nazli"><span lang="fa-IR">نیز تکه‌ای از
+برنامه را می‌نویسد تا با استفاده از آن
+به عنوان الگو یابی استفاده شود</span></font>.</p>
+<p dir="rtl" align="right" style="line-height: 100%; margin-bottom: 0in">
+<font face="Nazli"><span lang="fa-IR">در ادامه می‌پردازیم
+به مقاله دیگری که در</span></font><a href="https://medium.com/learning-from-learners/learners-guide-to-coq-theorem-prover-1-e380c9e360b8" name="medium">medium</a>
+<font face="Nazli"><span lang="fa-IR">منتشر شده است</span></font>.</p>
+<p dir="rtl" align="right" style="line-height: 100%; margin-bottom: 0in">
+D<img src="%E2%80%8CCoq_html_e8ee3490.png" name="Image1" alt="کد coq" align="left" width="187" height="219" border="0"/>
+ependent
+type <font face="Nazli"><span lang="fa-IR">ها </span></font>type
+<font face="Nazli"><span lang="fa-IR">هایی هستند که به
+یک مقدار وابسته اند</span></font>. <font face="Nazli"><span lang="fa-IR">شما
+می‌توانید </span></font>type<font face="Nazli"><span lang="fa-IR">های
+خود را به عنوان قضیه بنویسید</span></font>.destructing
+b <font face="Nazli"><span lang="fa-IR">تمامی مقادیر </span></font>b
+<font face="Nazli"><span lang="fa-IR">را یکی یکی به بوته
+آزمایش در می‌آورد</span></font>. <font face="Nazli"><span lang="fa-IR">از
+آنجا که در خط اول نوع </span></font>bool <font face="Nazli"><span lang="fa-IR">را
+از دو نوع </span></font>true <font face="Nazli"><span lang="fa-IR">و
+</span></font>false <font face="Nazli"><span lang="fa-IR">تعریف
+کردیم، در موقع </span></font>destrcut <font face="Nazli"><span lang="fa-IR">هر
+کدام از اینها یکبار تست می‌شود</span></font>.Reflexivity
+<font face="Nazli"><span lang="fa-IR">چک می‌کند که هر دو
+طرف معادله با هم برابر باشد</span></font>.</p>
+<p dir="rtl" align="right" style="line-height: 100%; margin-bottom: 0in">
+<br/>
+
+</p>
+<p dir="rtl" align="right" style="line-height: 100%; margin-bottom: 0in">
+<br/>
+
+</p>
+<p dir="rtl" align="right" style="line-height: 100%; margin-bottom: 0in">
+<br/>
+
+</p>
+<p dir="rtl" align="right" style="line-height: 100%; margin-bottom: 0in">
+<br/>
+
+</p>
+<p dir="rtl" align="right" style="line-height: 100%; margin-bottom: 0in">
+<br/>
+
+</p>
+<p dir="rtl" align="right" style="line-height: 100%; margin-bottom: 0in">
+<br/>
+
+</p>
+<p dir="rtl" align="right" style="line-height: 100%; margin-bottom: 0in">
+<br/>
+
+</p>
+<p align="left" style="line-height: 100%; margin-bottom: 0in"><font face="JetBrains Mono">Inductive
+<b>binopt:</b><span style="font-weight: normal"> Set := Plus | Times.</span></font></p>
+<p dir="rtl" align="right" style="line-height: 100%; margin-bottom: 0in">
+<font face="Nazli"><span lang="fa-IR"><span style="font-weight: normal">در
+این برنامه </span></span></font><font face="JetBrains Mono"><span style="font-weight: normal">Set
+: </span></font><font face="Nazli"><span lang="fa-IR"><span style="font-weight: normal">میگوید
+که </span><span style="font-weight: normal">نوع داده‌ای
+میخواهیم تعریف کنیم که به عنوان قطعه‌ای
+در زبان برنامه نویسی‌ما قرار است استفاده
+شود</span></span></font><font face="JetBrains Mono"><span style="font-weight: normal">.</span></font></p>
+<p align="left" style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+</body>
+</html>
