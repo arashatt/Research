@@ -28,3 +28,7 @@ https://beuke.org/coq-tutorial/
 برای کار اشتراکی حالت‌های مختلف دیگه‌ای وجود داره که با graph و set ها میشه اون رو formalize کرد. 
 
 علاقه زیادی به دنبال کردن این مسئله دارم و در همینجا ادامه اش میدم.
+
+
+![Coq](https://github.com/user-attachments/assets/2b7745ce-bd8d-4e0e-99dc-0c9df7aa3186)
+
